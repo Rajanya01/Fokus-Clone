@@ -1,0 +1,9 @@
+.triggu, .fukru{
+    visibility: visible;
+}
+
+@media screen and (max-width: 768px) {
+    .triggu, .fukru{
+        visibility: hidden;
+    }
+}

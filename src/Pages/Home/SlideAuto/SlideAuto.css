@@ -1,0 +1,26 @@
+.slide-container {
+    height: 500px !important;
+  }
+  
+  .each-slide-effect {
+    height: 500px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .each-slide-effect img {
+    height: 100% !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;     
+    scrollbar-width: none;        
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;                
+  }
+  

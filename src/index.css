@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables */
+:root {
+  --black: #000000;
+  --green: #87db46;
+  --yellow: #f2d25c;
+  --red: #ff5c5c;
+  --beige: #f3f6d1;
+}
+
+/* Global Reset and Layout */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+/* Hide scrollbar completely (optional) */
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Custom Styles */
+.slide-container {
+  @apply rounded-xl overflow-hidden;
+}
+
+.react-slideshow-container {
+  @apply h-full w-full;
+}
+
+.each-slide-effect {
+  @apply relative w-full;
+}
+
+.react-slideshow-wrapper {
+  @apply h-full w-full;
+}
+
+.images-wrap {
+  @apply h-full w-full;
+}

@@ -1,0 +1,410 @@
+.cont {
+  background-color: #fdfee7;
+  position: relative;
+  width: 100%;
+}
+
+.cont:has(.flavor1:hover) {
+  background: #87db46;
+}
+
+.cont:has(.flavor2:hover) {
+  background: #f2d25c;
+}
+
+.cont:has(.flavor3:hover) {
+  background: #ff5c5c;
+}
+
+.flavor1,
+.flavor2,
+.flavor3 {
+  height: 640px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.lemon,
+.kiwi {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.2) rotate(0deg);
+  transition: opacity 0.3s ease;
+}
+
+.flavor1:hover .lemon,
+.flavor1:hover .kiwi {
+  opacity: 1;
+  animation: spinAndScale 4s linear 0.2s infinite;
+}
+
+@keyframes spinAndScale {
+  0% {
+    transform: scale(1.2) rotate(0deg);
+  }
+
+  30% {
+    transform: scale(1) rotate(108deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.flavor1:hover {
+  animation: flavor1 0.6s ease;
+}
+
+@keyframes flavor1 {
+  0% {
+    transform: rotate(8deg);
+  }
+
+  50% {
+    transform: rotate(-8deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.pineapple,
+.mango {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.2) rotate(0deg);
+  transition: opacity 0.3s ease;
+}
+
+.flavor2:hover .pineapple,
+.flavor2:hover .mango {
+  opacity: 1;
+  animation: spinAndScale2 4s linear 0.2s infinite;
+}
+
+@keyframes spinAndScale2 {
+  0% {
+    transform: scale(1.2) rotate(0deg);
+  }
+
+  30% {
+    transform: scale(1) rotate(108deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.flavor2:hover {
+  animation: flavor2 0.6s ease;
+}
+
+@keyframes flavor2 {
+  0% {
+    transform: rotate(8deg);
+  }
+
+  50% {
+    transform: rotate(-8deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Pineapple - top left overlapping bottle */
+.flavor2 .pineapple {
+  position: absolute;
+  top: 180px;
+  left: 110px;
+  transform: translateY(20px)
+}
+
+.pineapple {
+  height: 100px ;
+  width: 100px ;
+}
+
+.flavor2 .mango {
+  position: absolute;
+  top: 350px;      /* Vertical position */
+  left: 280px;     /* Changed from 250px to 350px (+100px to the right) */
+  z-index: 10;
+  height: 80px;
+  width: 80px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.strawberry,
+.watermelon {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.2) rotate(0deg);
+  transition: opacity 0.3s ease;
+}
+
+.flavor3:hover .watermelon,
+.flavor3:hover .strawberry {
+  opacity: 1;
+  animation: spinAndScale3 4s linear 0.2s infinite;
+}
+
+@keyframes spinAndScale3 {
+  0% {
+    transform: scale(1.2) rotate(0deg);
+  }
+
+  30% {
+    transform: scale(1) rotate(108deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.flavor3:hover {
+  animation: flavor3 0.6s ease;
+}
+
+@keyframes flavor3 {
+  0% {
+    transform: rotate(8deg);
+  }
+
+  50% {
+    transform: rotate(-8deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .mobile-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mobile-slider {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  .mobile-flavor {
+    width: 33.333%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-flavor-inner {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }  
+
+  .fruit-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }  
+
+  /* Make fruits visible and animate by default on mobile */
+  .mobile-flavor .lemon,
+  .mobile-flavor .kiwi,
+  .mobile-flavor .pineapple,
+  .mobile-flavor .mango,
+  .mobile-flavor .strawberry,
+  .mobile-flavor .watermelon {
+    opacity: 1;
+    animation: mobileSpin 4s linear infinite;
+  }
+
+  @keyframes mobileSpin {
+    0% {
+      transform: scale(1.1) rotate(0deg);
+    }
+
+    100% {
+      transform: scale(1.1) rotate(360deg);
+    }
+  }
+
+  /* Flavor 1 fruit positioning */
+  .flavor1 .fruit-container .lemon {
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 140px);
+    z-index: 0;
+  }
+
+  .flavor1 .fruit-container .kiwi {
+    position: absolute;
+    bottom: 120px;
+    right: 60px;
+    z-index: 2;
+  }
+
+  /* Flavor 2 fruit positioning */
+  .mobile-flavor-inner.flavor2 .fruit-container .pineapple {
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 140px);
+    z-index: 0;
+  }
+
+  .mobile-flavor-inner.flavor2 .fruit-container .mango {
+    position: absolute;
+    bottom: 120px;
+    right: 60px;
+    z-index: 2;
+  }
+
+  /* Flavor 3 fruit positioning */
+  .flavor3 .fruit-container .strawberry {
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 140px);
+    z-index: 0;
+  }
+
+  .flavor3 .fruit-container .watermelon {
+    position: absolute;
+    bottom: 120px;
+    right: 60px;
+    z-index: 2;
+  }
+
+  .product-img {
+    width: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+  }
+
+  .mobile-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background-color: #000;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Adjust fruit positions for smaller screens */
+  .flavor1 .fruit-container .lemon,
+  .flavor2 .fruit-container .pineapple,
+  .flavor3 .fruit-container .strawberry {
+    top: 80px;
+    left: calc(50% - 120px);
+  }
+
+  .flavor1 .fruit-container .kiwi,
+  .flavor2 .fruit-container .mango,
+  .flavor3 .fruit-container .watermelon {
+    bottom: 100px;
+    right: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-flavor-inner.flavor2 .fruit-container .pineapple {
+    top: 80px;
+    left: calc(50% - 120px);
+  }
+
+  .mobile-flavor-inner.flavor2 .fruit-container .mango {
+    bottom: 100px;
+    right: 40px;
+  }
+}
+
+/* Inside the existing mobile media query (Flavor.css) */
+@media (max-width: 768px) {
+  /* Ensure mango is visible by default (mobile overrides desktop hover effects) */
+  .mobile-flavor .mango {
+    opacity: 1 !important; /* Force visibility */
+    animation: mobileSpin 4s linear infinite !important;
+  }
+
+  /* Adjust mango position for mobile */
+  .flavor2 .fruit-container .mango {
+    position: absolute;
+    bottom: 120px;
+    right: 60px; /* Adjust if needed (e.g., right: 40px for smaller screens) */
+    z-index: 2;  /* Ensure it appears above the bottle */
+    height: 80px;
+    width: 80px;
+  }
+}
+
+/* For very small screens (optional refinement) */
+@media (max-width: 480px) {
+  .flavor2 .fruit-container .mango {
+    bottom: 100px;
+    right: 40px; /* Tweak as needed */
+    height: 70px;
+    width: 70px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cont{
+    height: 600px;
+  }  
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: translateY(250px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);   
+  }
+}
+.flavor1,.flavor2,.flavor3 {
+  animation: popup 0.3s ease-out forwards;
+  animation-timeline: view();
+    animation-range: entry 15% cover 35%; 
+}
+
